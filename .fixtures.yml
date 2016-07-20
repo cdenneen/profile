@@ -1,0 +1,11 @@
+---
+fixtures:
+  forge_modules:
+    dynatrace: 'dynatrace/dynatrace'
+    apache: 'puppetlabs/apache'
+    java: 'puppetlabs/java'
+    stdlib: 'puppetlabs/stdlib'
+    dirtree: 'AlexCline/dirtree'
+    wget: 'maestrodev/wget'
+  symlinks:
+    profile: "#{source_dir}"
