@@ -1,12 +1,24 @@
 class profile {
-  class { 'dynatrace::role::agents_package':
-    installer_file_url => 'http://downloads.dynatracesaas.com/6.3/dynatrace-agent-unix.jar'
+  class { '::java':
+    distribution => 'jre',
+    version      => '1.8',
   }
-
-  class { 'dynatrace::role::java_agent':
-    env_var_name      => 'CATALINA_OPTS',
-    env_var_file_name => '/opt/apache-tomcat/bin/catalina.sh',
-    agent_name        => 'apache-tomcat-agent',
-    require           => Class['dynatrace::role::agents_package']
+  class { '::dynatrace::role::collector':
+    installer_file_url => 'http://downloads.dynatracesaas.com/6.3/dynatrace-collector-linux-x86.jar',
+    dynatrace_owner    => 'dynatrace',
+    dynatrace_group    => 'dynatrace',
+    require            => Class['java']
+  }
+  class { '::dynatrace::role::memory_analysis_server':
+    installer_file_url => 'http://downloads.dynatracesaas.com/6.3/dynatrace-analysisserver-linux-x86.jar',
+    dynatrace_owner    => 'dynatrace',
+    dynatrace_group    => 'dynatrace',
+    require            => Class['java']
+  }
+  class { '::dynatrace::role::server':
+    installer_file_url => 'http://downloads.dynatracesaas.com/6.3/dynatrace-server-linux-x86.jar',
+    dynatrace_owner    => 'dynatrace',
+    dynatrace_group    => 'dynatrace',
+    require            => Class['java']
   }
 }

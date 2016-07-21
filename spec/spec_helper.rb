@@ -1,7 +1,7 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'rspec-puppet'
 require 'rspec-puppet-facts'
-#require 'rspec-puppet-utils'
+require 'rspec-puppet-utils'
 #require 'hiera'
 
 include RspecPuppetFacts
@@ -28,6 +28,9 @@ end
 RSpec.configure do |c|
   c.mock_framework = :rspec
   c.hiera_config = File.expand_path(File.join(__FILE__, '../fixtures/hiera.yaml'))
+  c.after(:suite) do
+    RSpec::Puppet::Coverage.report!(95)
+  end
 end
 
 provider_class = Puppet::Type.type(:package).provider(:rpm)

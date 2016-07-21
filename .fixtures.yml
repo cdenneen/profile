@@ -1,7 +1,9 @@
 ---
 fixtures:
+  repositories:
+    dynatrace: 'https://github.com/Dynatrace/Dynatrace-Puppet.git'
   forge_modules:
-    dynatrace: 'dynatrace/dynatrace'
+    #dynatrace: 'dynatrace/dynatrace'
     apache: 'puppetlabs/apache'
     java: 'puppetlabs/java'
     stdlib: 'puppetlabs/stdlib'

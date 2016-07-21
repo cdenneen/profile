@@ -21,6 +21,7 @@ describe 'profile' do
         })
       end
       it { is_expected.to compile }
+      it { is_expected.to contain_class('profile') }
     end
   end
 end
